@@ -41,7 +41,9 @@ const SortableFieldItem: React.FC<{
   const [isExpanded, setIsExpanded] = useState(false);
   const [optionsText, setOptionsText] = useState(() =>
     field.type === "select" || field.type === "radio"
-      ? field.options.map(({ label, value }) => `${label}:${value}`).join("\n")
+      ? field.options
+          ?.map(({ label, value }) => `${label}:${value}`)
+          .join("\n") || ""
       : ""
   );
   const { attributes, listeners, setNodeRef, transform, transition } =
@@ -259,11 +261,11 @@ const SortableFieldItem: React.FC<{
                 className={inputClassName}
               >
                 <option value="">None</option>
-                {field.options.map((opt) => (
+                {field.options?.map((opt) => (
                   <option key={opt.value} value={opt.value}>
                     {opt.label}
                   </option>
-                ))}
+                )) || <option disabled>Add options below</option>}
               </select>
             ) : (
               <input
