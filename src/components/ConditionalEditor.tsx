@@ -115,11 +115,11 @@ export const ConditionalEditor: React.FC<ConditionalEditorProps> = ({
                 <option value="">Select value</option>
                 {(selectedField.type === "select" ||
                   selectedField.type === "radio") &&
-                  selectedField.options.map((opt) => (
+                  (selectedField.options?.map((opt) => (
                     <option key={opt.value} value={opt.value}>
                       {opt.label}
                     </option>
-                  ))}
+                  )) || <option disabled>Field has no options</option>)}
               </select>
             ) : (
               <input
