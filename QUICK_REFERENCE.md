@@ -7,7 +7,7 @@ npm install
 npm run dev
 ```
 
-Visit: <http://localhost:5173/form-builder/>
+Visit: <https://landons23.github.io/benepass-form-builder/> (deployed) or <http://localhost:5173/benepass-form-builder/> (local)
 
 ## Project Structure
 
@@ -302,7 +302,8 @@ For questions or issues:
 
 ## Quick Links
 
-- Local Dev: <http://localhost:5173/form-builder/>
+- Live Demo: <https://landons23.github.io/benepass-form-builder/>
+- Local Dev: <http://localhost:5173/benepass-form-builder/>
 - Start: `npm run dev`
 - Build: `npm run build`
 - Deploy: See DEPLOYMENT.md

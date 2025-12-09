@@ -2,7 +2,7 @@
 
 A production-ready React form builder that allows users to design forms visually, export them as JSON schema, import existing schemas, and render working forms with full validation and submission handling.
 
-🔗 **Live Demo**: <http://localhost:5173/form-builder/> (when running locally)
+🔗 **Live Demo**: <https://landons23.github.io/benepass-form-builder/> (deployed) | <http://localhost:5173/benepass-form-builder/> (local)
 
 ## 🚀 Features
 

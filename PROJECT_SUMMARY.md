@@ -307,7 +307,7 @@ npm run deploy
 
 **Project Status**: ✅ **COMPLETE** and ready for presentation
 
-**Live Demo**: <http://localhost:5173/form-builder/> (when running `npm run dev`)
+**Live Demo**: <https://landons23.github.io/benepass-form-builder/> (deployed) | <http://localhost:5173/benepass-form-builder/> (local)
 
 **Time Invested**: ~3 hours
 
