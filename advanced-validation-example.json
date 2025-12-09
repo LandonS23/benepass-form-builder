@@ -1,0 +1,270 @@
+{
+  "title": "Advanced Validation Examples",
+  "description": "This form demonstrates various validation patterns and conditional logic",
+  "fields": [
+    {
+      "id": "field-1",
+      "name": "username",
+      "label": "Username",
+      "type": "text",
+      "placeholder": "johndoe123",
+      "required": true,
+      "helpText": "3-20 characters, alphanumeric and underscores only",
+      "validation": [
+        {
+          "type": "regex",
+          "value": "^[a-zA-Z0-9_]{3,20}$",
+          "message": "Username must be 3-20 characters and contain only letters, numbers, and underscores"
+        }
+      ]
+    },
+    {
+      "id": "field-2",
+      "name": "password",
+      "label": "Password",
+      "type": "text",
+      "placeholder": "Enter a strong password",
+      "required": true,
+      "helpText": "Must be at least 8 characters with uppercase, lowercase, and number",
+      "validation": [
+        {
+          "type": "min",
+          "value": 8,
+          "message": "Password must be at least 8 characters"
+        },
+        {
+          "type": "regex",
+          "value": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$",
+          "message": "Password must contain at least one uppercase letter, one lowercase letter, and one number"
+        }
+      ]
+    },
+    {
+      "id": "field-3",
+      "name": "age",
+      "label": "Age",
+      "type": "number",
+      "required": true,
+      "helpText": "You must be between 18 and 120 years old",
+      "validation": [
+        {
+          "type": "min",
+          "value": 18,
+          "message": "You must be at least 18 years old"
+        },
+        {
+          "type": "max",
+          "value": 120,
+          "message": "Please enter a valid age"
+        }
+      ]
+    },
+    {
+      "id": "field-4",
+      "name": "phoneNumber",
+      "label": "Phone Number",
+      "type": "text",
+      "placeholder": "123-456-7890",
+      "required": true,
+      "helpText": "Format: XXX-XXX-XXXX",
+      "validation": [
+        {
+          "type": "regex",
+          "value": "^\\d{3}-\\d{3}-\\d{4}$",
+          "message": "Phone number must be in format XXX-XXX-XXXX"
+        }
+      ]
+    },
+    {
+      "id": "field-5",
+      "name": "zipCode",
+      "label": "ZIP Code",
+      "type": "text",
+      "placeholder": "12345 or 12345-6789",
+      "required": true,
+      "helpText": "5 digits or 5+4 format",
+      "validation": [
+        {
+          "type": "regex",
+          "value": "^\\d{5}(-\\d{4})?$",
+          "message": "ZIP code must be 5 digits or 5+4 format (12345 or 12345-6789)"
+        }
+      ]
+    },
+    {
+      "id": "field-6",
+      "name": "creditCard",
+      "label": "Credit Card Number",
+      "type": "text",
+      "placeholder": "1234 5678 9012 3456",
+      "helpText": "Demo only - don't enter real credit card numbers!",
+      "validation": [
+        {
+          "type": "regex",
+          "value": "^\\d{4}\\s\\d{4}\\s\\d{4}\\s\\d{4}$",
+          "message": "Credit card must be in format XXXX XXXX XXXX XXXX"
+        }
+      ]
+    },
+    {
+      "id": "field-7",
+      "name": "website",
+      "label": "Website URL",
+      "type": "text",
+      "placeholder": "https://example.com",
+      "helpText": "Must start with http:// or https://",
+      "validation": [
+        {
+          "type": "regex",
+          "value": "^https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)$",
+          "message": "Please enter a valid URL starting with http:// or https://"
+        }
+      ]
+    },
+    {
+      "id": "field-8",
+      "name": "accountType",
+      "label": "Account Type",
+      "type": "select",
+      "required": true,
+      "options": [
+        { "label": "Personal", "value": "personal" },
+        { "label": "Business", "value": "business" },
+        { "label": "Enterprise", "value": "enterprise" }
+      ]
+    },
+    {
+      "id": "field-9",
+      "name": "companyName",
+      "label": "Company Name",
+      "type": "text",
+      "placeholder": "Acme Inc.",
+      "required": true,
+      "conditional": {
+        "field": "accountType",
+        "operator": "equals",
+        "value": "business"
+      },
+      "helpText": "Only required for business accounts",
+      "validation": [
+        {
+          "type": "min",
+          "value": 2,
+          "message": "Company name must be at least 2 characters"
+        }
+      ]
+    },
+    {
+      "id": "field-10",
+      "name": "companySize",
+      "label": "Company Size",
+      "type": "select",
+      "required": true,
+      "conditional": {
+        "field": "accountType",
+        "operator": "equals",
+        "value": "business"
+      },
+      "options": [
+        { "label": "1-10 employees", "value": "small" },
+        { "label": "11-50 employees", "value": "medium" },
+        { "label": "51-200 employees", "value": "large" },
+        { "label": "201+ employees", "value": "enterprise" }
+      ]
+    },
+    {
+      "id": "field-11",
+      "name": "taxId",
+      "label": "Tax ID / EIN",
+      "type": "text",
+      "placeholder": "12-3456789",
+      "required": true,
+      "conditional": {
+        "field": "accountType",
+        "operator": "equals",
+        "value": "business"
+      },
+      "helpText": "Format: XX-XXXXXXX",
+      "validation": [
+        {
+          "type": "regex",
+          "value": "^\\d{2}-\\d{7}$",
+          "message": "Tax ID must be in format XX-XXXXXXX"
+        }
+      ]
+    },
+    {
+      "id": "field-12",
+      "name": "salary",
+      "label": "Expected Annual Salary",
+      "type": "number",
+      "placeholder": "50000",
+      "conditional": {
+        "field": "accountType",
+        "operator": "equals",
+        "value": "personal"
+      },
+      "validation": [
+        {
+          "type": "min",
+          "value": 0,
+          "message": "Salary cannot be negative"
+        },
+        {
+          "type": "max",
+          "value": 10000000,
+          "message": "Please enter a realistic salary"
+        }
+      ]
+    },
+    {
+      "id": "field-13",
+      "name": "startDate",
+      "label": "Start Date",
+      "type": "date",
+      "required": true,
+      "helpText": "When would you like to begin?"
+    },
+    {
+      "id": "field-14",
+      "name": "preferredContact",
+      "label": "Preferred Contact Method",
+      "type": "radio",
+      "required": true,
+      "options": [
+        { "label": "Email", "value": "email" },
+        { "label": "Phone", "value": "phone" },
+        { "label": "Text Message", "value": "sms" }
+      ]
+    },
+    {
+      "id": "field-15",
+      "name": "additionalNotes",
+      "label": "Additional Notes",
+      "type": "textarea",
+      "placeholder": "Any additional information you'd like to share...",
+      "helpText": "Optional - up to 500 characters",
+      "validation": [
+        {
+          "type": "max",
+          "value": 500,
+          "message": "Notes cannot exceed 500 characters"
+        }
+      ]
+    },
+    {
+      "id": "field-16",
+      "name": "newsletter",
+      "label": "Subscribe to newsletter",
+      "type": "checkbox",
+      "defaultValue": false
+    },
+    {
+      "id": "field-17",
+      "name": "terms",
+      "label": "I agree to the Terms of Service and Privacy Policy",
+      "type": "checkbox",
+      "required": true
+    }
+  ]
+}

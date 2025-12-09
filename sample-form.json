@@ -1,0 +1,163 @@
+{
+  "title": "Employee Benefits Enrollment",
+  "description": "Complete this form to enroll in your employee benefits package",
+  "fields": [
+    {
+      "id": "field-1",
+      "name": "fullName",
+      "label": "Full Name",
+      "type": "text",
+      "placeholder": "John Doe",
+      "required": true,
+      "helpText": "Enter your full legal name as it appears on your ID",
+      "validation": [
+        {
+          "type": "min",
+          "value": 2,
+          "message": "Name must be at least 2 characters"
+        },
+        {
+          "type": "max",
+          "value": 100,
+          "message": "Name cannot exceed 100 characters"
+        }
+      ]
+    },
+    {
+      "id": "field-2",
+      "name": "email",
+      "label": "Email Address",
+      "type": "text",
+      "placeholder": "john.doe@company.com",
+      "required": true,
+      "validation": [
+        {
+          "type": "regex",
+          "value": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+          "message": "Please enter a valid email address"
+        }
+      ]
+    },
+    {
+      "id": "field-3",
+      "name": "employeeId",
+      "label": "Employee ID",
+      "type": "number",
+      "required": true,
+      "helpText": "Your 6-digit employee ID",
+      "validation": [
+        {
+          "type": "min",
+          "value": 100000,
+          "message": "Employee ID must be 6 digits"
+        },
+        {
+          "type": "max",
+          "value": 999999,
+          "message": "Employee ID must be 6 digits"
+        }
+      ]
+    },
+    {
+      "id": "field-4",
+      "name": "country",
+      "label": "Country",
+      "type": "select",
+      "required": true,
+      "options": [
+        { "label": "United States", "value": "US" },
+        { "label": "Canada", "value": "CA" },
+        { "label": "United Kingdom", "value": "UK" },
+        { "label": "Other", "value": "OTHER" }
+      ]
+    },
+    {
+      "id": "field-5",
+      "name": "state",
+      "label": "State",
+      "type": "text",
+      "placeholder": "e.g., California, New York",
+      "required": true,
+      "conditional": {
+        "field": "country",
+        "operator": "equals",
+        "value": "US"
+      },
+      "helpText": "Only required for US residents"
+    },
+    {
+      "id": "field-6",
+      "name": "benefitPlan",
+      "label": "Select Your Benefit Plan",
+      "type": "radio",
+      "required": true,
+      "options": [
+        { "label": "Basic Plan - $100/month", "value": "basic" },
+        { "label": "Standard Plan - $200/month", "value": "standard" },
+        { "label": "Premium Plan - $350/month", "value": "premium" }
+      ]
+    },
+    {
+      "id": "field-7",
+      "name": "additionalCoverage",
+      "label": "Additional Coverage Options",
+      "type": "select",
+      "options": [
+        { "label": "Dental Coverage (+$50/month)", "value": "dental" },
+        { "label": "Vision Coverage (+$25/month)", "value": "vision" },
+        { "label": "Life Insurance (+$75/month)", "value": "life" },
+        { "label": "Disability Insurance (+$100/month)", "value": "disability" }
+      ],
+      "helpText": "Optional - Select any additional coverage you'd like to add"
+    },
+    {
+      "id": "field-8",
+      "name": "dependents",
+      "label": "Number of Dependents",
+      "type": "number",
+      "defaultValue": 0,
+      "validation": [
+        {
+          "type": "min",
+          "value": 0,
+          "message": "Cannot be negative"
+        },
+        {
+          "type": "max",
+          "value": 10,
+          "message": "Maximum 10 dependents allowed"
+        }
+      ]
+    },
+    {
+      "id": "field-9",
+      "name": "startDate",
+      "label": "Coverage Start Date",
+      "type": "date",
+      "required": true,
+      "helpText": "Select the date you want your coverage to begin"
+    },
+    {
+      "id": "field-10",
+      "name": "specialRequests",
+      "label": "Special Requests or Questions",
+      "type": "textarea",
+      "placeholder": "Enter any special requests or questions about your benefits...",
+      "helpText": "Optional - Let us know if you have any special circumstances (max 500 characters)",
+      "validation": [
+        {
+          "type": "max",
+          "value": 500,
+          "message": "Special requests cannot exceed 500 characters"
+        }
+      ]
+    },
+    {
+      "id": "field-11",
+      "name": "acknowledgement",
+      "label": "I acknowledge that I have read and understood the benefits documentation",
+      "type": "checkbox",
+      "required": true
+    }
+  ]
+}
